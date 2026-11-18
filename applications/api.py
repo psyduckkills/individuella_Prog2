@@ -48,6 +48,8 @@ VADERKODER = {
     96: "Åska med lätt hagel",
     99: "Åska med kraftig hagel",
 }
+
+
 def vaderikon(kod):
     """Returnerar en ikon som passar väderkoden."""
     if kod == 0:
@@ -64,8 +66,10 @@ def vaderikon(kod):
         return "❄️"
     if kod in (95, 96, 99):
         return "⛈️"
-    return "❓" 
-# lånadkod 
+    return "❓"
+
+
+# lånadkod
 
 DAGNAMN = ["Idag", "Imorgon", "Övermorgon"]
 
@@ -106,6 +110,7 @@ def tolka_prognos(data):
                 {
                     "dag": dagnamn(i),
                     "datum": datum,
+                    "ikon": vaderikon(daily["weather_code"][i]),
                     "beskrivning": tolka_vaderkod(daily["weather_code"][i]),
                     "max": daily["temperature_2m_max"][i],
                     "min": daily["temperature_2m_min"][i],

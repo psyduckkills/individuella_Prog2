@@ -40,18 +40,22 @@ def test_hamta_stad_ogiltig(stad):
 def test_tolka_vaderkod(kod, text):
     assert api.tolka_vaderkod(kod) == text
 
-@pytest.mark.parametrize("kod, ikon", [
-    (0, "☀️"),
-    (2, "⛅"),
-    (3, "☁️"),
-    (45, "🌫️"),
-    (61, "🌧️"),
-    (73, "❄️"),
-    (95, "⛈️"),
-    (999, "❓"),
-])
+
+@pytest.mark.parametrize(
+    "kod, ikon",
+    [
+        (0, "☀️"),
+        (2, "⛅"),
+        (3, "☁️"),
+        (45, "🌫️"),
+        (61, "🌧️"),
+        (73, "❄️"),
+        (95, "⛈️"),
+        (999, "❓"),
+    ],
+)
 def test_vaderikon(kod, ikon):
-    assert api.vaderikon(kod) == ikon #lånad kod
+    assert api.vaderikon(kod) == ikon  # lånad kod
 
 
 @pytest.mark.parametrize(
@@ -79,6 +83,7 @@ def test_tolka_prognos(exempeldata):
     assert dagar[1] == {
         "dag": "Imorgon",
         "datum": "2026-11-14",
+        "ikon": "🌧️",
         "beskrivning": "Lätt regn",
         "max": 4.5,
         "min": 0.3,
