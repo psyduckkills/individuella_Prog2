@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Väder i {{ stad.namn }}{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('index')}}" class="btn btn-outline-dark mt-3"><-Tillbaka</a>
+<h1 class="text-center my-4">{{ stad.namn}}</h1>
+
+{% if fel %}
+    <div class="alert alert-danger text-center">
+        Kunde inte hämta väderdata: {{ fel }}
+    </div>
+{% else %}
+<div class="row g-3">
+    {% for dag in dagar %}
+    <div class="col-md-4">
+        <div class="card text-center h-100">
+            <div class="card-body">
+                <h2 class="card-title h4">{{ dag.dag}}</h2>
+                <p class="text-muted">{{ dag.datum}}</p>
+                <p class="fs-5">{{ dag.beskrivning }}</p>
+                <p>{{ dag.min }}° / {{ dag.max }} °</p>
+                <p>Nederbörd: {{ dag.nederbord}} mm</p>
+            </div>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title%}StartSida{% endblock %}
+
+{%block content%}
+<div class="dropdown text-center">
+    <button 
+    class="btn btn-outline-dark btn-lg 
+    dropdown-toggle"
+    style="align-self: center"
+    type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Välj stad
+</button>
+<ul class="dropdown-menu">
+    {% for nyckel, info in stader.items() %}
+        <li><a class="dropdown-item" href="{{ url_for('stad_sida', stad=nyckel)}}">{{ info.namn }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
