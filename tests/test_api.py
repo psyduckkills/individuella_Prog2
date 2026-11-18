@@ -40,6 +40,19 @@ def test_hamta_stad_ogiltig(stad):
 def test_tolka_vaderkod(kod, text):
     assert api.tolka_vaderkod(kod) == text
 
+@pytest.mark.parametrize("kod, ikon", [
+    (0, "☀️"),
+    (2, "⛅"),
+    (3, "☁️"),
+    (45, "🌫️"),
+    (61, "🌧️"),
+    (73, "❄️"),
+    (95, "⛈️"),
+    (999, "❓"),
+])
+def test_vaderikon(kod, ikon):
+    assert api.vaderikon(kod) == ikon #lånad kod
+
 
 @pytest.mark.parametrize(
     "index, namn",

@@ -48,6 +48,24 @@ VADERKODER = {
     96: "Åska med lätt hagel",
     99: "Åska med kraftig hagel",
 }
+def vaderikon(kod):
+    """Returnerar en ikon som passar väderkoden."""
+    if kod == 0:
+        return "☀️"
+    if kod in (1, 2):
+        return "⛅"
+    if kod == 3:
+        return "☁️"
+    if kod in (45, 48):
+        return "🌫️"
+    if kod in (51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82):
+        return "🌧️"
+    if kod in (71, 73, 75, 77, 85, 86):
+        return "❄️"
+    if kod in (95, 96, 99):
+        return "⛈️"
+    return "❓" 
+# lånadkod 
 
 DAGNAMN = ["Idag", "Imorgon", "Övermorgon"]
 
